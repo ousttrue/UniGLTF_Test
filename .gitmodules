@@ -1,0 +1,3 @@
+[submodule "Assets/UniGLTF"]
+	path = Assets/UniGLTF
+	url = https://github.com/ousttrue/UniGLTF.git
