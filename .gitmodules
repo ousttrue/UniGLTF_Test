@@ -4,3 +4,6 @@
 [submodule "Assets/UniJSON"]
 	path = Assets/UniJSON
 	url = https://github.com/ousttrue/UniJSON.git
+[submodule "glTF"]
+	path = glTF
+	url = https://github.com/KhronosGroup/glTF.git
