@@ -292,7 +292,7 @@ namespace UniGLTF.Zip
         }
     }
 
-    class ZipArchive : IStorage
+    class ZipArchiveStorage : IStorage
     {
         public override string ToString()
         {
@@ -301,10 +301,10 @@ namespace UniGLTF.Zip
 
         public List<CentralDirectoryFileHeader> Entries = new List<CentralDirectoryFileHeader>();
 
-        public static ZipArchive Parse(byte[] bytes)
+        public static ZipArchiveStorage Parse(byte[] bytes)
         {
             var eocd = EOCD.Parse(bytes);
-            var archive = new ZipArchive();
+            var archive = new ZipArchiveStorage();
 
             var pos = eocd.OffsetOfStartOfCentralDirectory;
             for (int i = 0; i < eocd.NumberOfCentralDirectoryRecordsOnThisDisk; ++i)
