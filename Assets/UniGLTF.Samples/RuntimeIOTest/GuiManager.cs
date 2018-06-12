@@ -1,4 +1,5 @@
 ﻿using System.IO;
+using System.Text;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -36,7 +37,15 @@ namespace UniGLTF
             Debug.LogFormat("[OnClick] {0}", path);
             var context = new ImporterContext();
 
-            context.ParseGlb(bytes);
+            var ext = Path.GetExtension(path).ToLower();
+            if (ext == ".glb")
+            {
+                context.ParseGlb(bytes);
+            }
+            else
+            {
+                context.ParseJson(Encoding.UTF8.GetString(bytes), new FileSystemStorage(Path.GetDirectoryName(path)));
+            }
 
             gltfImporter.Import<glTF>(context);
             context.Root.name = Path.GetFileNameWithoutExtension(path);
