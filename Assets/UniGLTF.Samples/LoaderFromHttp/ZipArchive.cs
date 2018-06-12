@@ -349,8 +349,6 @@ namespace UniGLTF.Zip
             var local = new LocalFileHeader(header.Bytes, header.RelativeOffsetOfLocalFileHeader);
             var pos = local.Offset + local.Length;
 
-            var dst = new Byte[local.UncompressedSize];
-
             using (var s = new MemoryStream(header.Bytes, pos, local.CompressedSize, false))
             using (var deflateStream = new DeflateStream(s, CompressionMode.Decompress))
             using (var r = new StreamReader(deflateStream, encoding))
