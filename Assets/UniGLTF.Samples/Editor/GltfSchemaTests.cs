@@ -167,5 +167,76 @@ namespace UniGLTF
             Assert.True(fromSchema.MatchProperties(fromClass));
         }
 
+        [Test]
+        public void MeshPrimitive()
+        {
+            var path = Path.GetFullPath(Application.dataPath + "/../glTF/specification/2.0/schema/mesh.primitive.schema.json");
+            var fromSchema = JsonSchema.ParseFromPath(path);
+            var fromClass = JsonSchema.Create<glTFPrimitives>();
+            Assert.True(fromSchema.MatchProperties(fromClass));
+        }
+
+        [Test]
+        public void Mesh()
+        {
+            var path = Path.GetFullPath(Application.dataPath + "/../glTF/specification/2.0/schema/mesh.schema.json");
+            var fromSchema = JsonSchema.ParseFromPath(path);
+            var fromClass = JsonSchema.Create<glTFMesh>();
+            Assert.True(fromSchema.MatchProperties(fromClass));
+        }
+
+        [Test]
+        public void Node()
+        {
+            var path = Path.GetFullPath(Application.dataPath + "/../glTF/specification/2.0/schema/node.schema.json");
+            var fromSchema = JsonSchema.ParseFromPath(path);
+            var fromClass = JsonSchema.Create<glTFNode>();
+            Assert.True(fromSchema.MatchProperties(fromClass));
+        }
+
+        [Test]
+        public void Sampler()
+        {
+            var path = Path.GetFullPath(Application.dataPath + "/../glTF/specification/2.0/schema/sampler.schema.json");
+            var fromSchema = JsonSchema.ParseFromPath(path);
+            var fromClass = JsonSchema.Create<glTFTextureSampler>();
+            Assert.True(fromSchema.MatchProperties(fromClass));
+        }
+
+        [Test]
+        public void Scene()
+        {
+            var path = Path.GetFullPath(Application.dataPath + "/../glTF/specification/2.0/schema/scene.schema.json");
+            var fromSchema = JsonSchema.ParseFromPath(path);
+            var fromClass = JsonSchema.Create<gltfScene>();
+            Assert.True(fromSchema.MatchProperties(fromClass));
+        }
+
+        [Test]
+        public void Skin()
+        {
+            var path = Path.GetFullPath(Application.dataPath + "/../glTF/specification/2.0/schema/skin.schema.json");
+            var fromSchema = JsonSchema.ParseFromPath(path);
+            var fromClass = JsonSchema.Create<glTFSkin>();
+            Assert.True(fromSchema.MatchProperties(fromClass));
+        }
+
+        [Test]
+        public void Texture()
+        {
+            var path = Path.GetFullPath(Application.dataPath + "/../glTF/specification/2.0/schema/texture.schema.json");
+            var fromSchema = JsonSchema.ParseFromPath(path);
+            var fromClass = JsonSchema.Create<glTFTexture>();
+            Assert.True(fromSchema.MatchProperties(fromClass));
+        }
+
+        [Test]
+        public void TextureInfo()
+        {
+            var path = Path.GetFullPath(Application.dataPath + "/../glTF/specification/2.0/schema/textureInfo.schema.json");
+            var fromSchema = JsonSchema.ParseFromPath(path);
+            var fromClass = JsonSchema.Create<glTFTextureInfo>();
+            Assert.True(fromSchema.MatchProperties(fromClass));
+        }
     }
 }
