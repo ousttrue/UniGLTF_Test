@@ -26,205 +26,208 @@ namespace UniGLTF
         public void Accessor()
         {
             var fromSchema = JsonSchema.ParseFromPath(SchemaDir.Get("accessor.schema.json"));
-            Assert.AreEqual("Accessor", fromSchema.Title);
-            Assert.AreEqual("object", fromSchema.Type);
-            Assert.AreEqual("integer", fromSchema.Properties["bufferView"].Type);
-            Assert.AreEqual("integer", fromSchema.Properties["byteOffset"].Type);
 
-            var fromClass = JsonSchema.Create<glTFAccessor>();
-            Assert.True(fromSchema.MatchProperties(fromClass));
+            var validator = fromSchema.Validator as JsonObjectValidator;
+
+            Assert.AreEqual("Accessor", fromSchema.Title);
+            Assert.AreEqual(JsonValueType.Object, validator.JsonValueType);
+            Assert.AreEqual(JsonValueType.Integer, validator.Properties["bufferView"].Validator.JsonValueType);
+            Assert.AreEqual(JsonValueType.Integer, validator.Properties["byteOffset"].Validator.JsonValueType);
+
+            var fromClass = JsonSchema.FromType<glTFAccessor>();
+            Assert.AreEqual(fromSchema, fromClass);
         }
 
         [Test]
         public void AccessorSparseIndices()
         {
             var fromSchema = JsonSchema.ParseFromPath(SchemaDir.Get("accessor.sparse.indices.schema.json"));
-            var fromClass = JsonSchema.Create<glTFSparseIndices>();
-            Assert.True(fromSchema.MatchProperties(fromClass));
+            var fromClass = JsonSchema.FromType<glTFSparseIndices>();
+            Assert.AreEqual(fromSchema, fromClass);
         }
 
         [Test]
         public void AccessorSparse()
         {
             var fromSchema = JsonSchema.ParseFromPath(SchemaDir.Get("accessor.sparse.schema.json"));
-            var fromClass = JsonSchema.Create<glTFSparse>();
-            Assert.True(fromSchema.MatchProperties(fromClass));
+            var fromClass = JsonSchema.FromType<glTFSparse>();
+            Assert.AreEqual(fromSchema, fromClass);
         }
 
         [Test]
         public void AccessorSparseValues()
         {
             var fromSchema = JsonSchema.ParseFromPath(SchemaDir.Get("accessor.sparse.values.schema.json"));
-            var fromClass = JsonSchema.Create<glTFSparseValues>();
-            Assert.True(fromSchema.MatchProperties(fromClass));
+            var fromClass = JsonSchema.FromType<glTFSparseValues>();
+            Assert.AreEqual(fromSchema, fromClass);
         }
 
         [Test]
         public void AnimationChannel()
         {
             var fromSchema = JsonSchema.ParseFromPath(SchemaDir.Get("animation.channel.schema.json"));
-            var fromClass = JsonSchema.Create<glTFAnimationChannel>();
-            Assert.True(fromSchema.MatchProperties(fromClass));
+            var fromClass = JsonSchema.FromType<glTFAnimationChannel>();
+            Assert.AreEqual(fromSchema, fromClass);
         }
 
         [Test]
         public void AnimationChannelTarget()
         {
             var fromSchema = JsonSchema.ParseFromPath(SchemaDir.Get("animation.channel.target.schema.json"));
-            var fromClass = JsonSchema.Create<glTFAnimationTarget>();
-            Assert.True(fromSchema.MatchProperties(fromClass));
+            var fromClass = JsonSchema.FromType<glTFAnimationTarget>();
+            Assert.AreEqual(fromSchema, fromClass);
         }
 
         [Test]
         public void AnimationSampler()
         {
             var fromSchema = JsonSchema.ParseFromPath(SchemaDir.Get("animation.sampler.schema.json"));
-            var fromClass = JsonSchema.Create<glTFAnimationSampler>();
-            Assert.True(fromSchema.MatchProperties(fromClass));
+            var fromClass = JsonSchema.FromType<glTFAnimationSampler>();
+            Assert.AreEqual(fromSchema, fromClass);
         }
 
         [Test]
         public void Animation()
         {
             var fromSchema = JsonSchema.ParseFromPath(SchemaDir.Get("animation.schema.json"));
-            var fromClass = JsonSchema.Create<glTFAnimation>();
-            Assert.True(fromSchema.MatchProperties(fromClass));
+            var fromClass = JsonSchema.FromType<glTFAnimation>();
+            Assert.AreEqual(fromSchema, fromClass);
         }
 
         [Test]
         public void Asset()
         {
             var fromSchema = JsonSchema.ParseFromPath(SchemaDir.Get("asset.schema.json"));
-            var fromClass = JsonSchema.Create<glTFAssets>();
-            Assert.True(fromSchema.MatchProperties(fromClass));
+            var fromClass = JsonSchema.FromType<glTFAssets>();
+            Assert.AreEqual(fromSchema, fromClass);
         }
 
         [Test]
         public void Buffer()
         {
             var fromSchema = JsonSchema.ParseFromPath(SchemaDir.Get("buffer.schema.json"));
-            var fromClass = JsonSchema.Create<glTFBuffer>();
-            Assert.True(fromSchema.MatchProperties(fromClass));
+            var fromClass = JsonSchema.FromType<glTFBuffer>();
+            Assert.AreEqual(fromSchema, fromClass);
         }
 
         [Test]
         public void BufferView()
         {
             var fromSchema = JsonSchema.ParseFromPath(SchemaDir.Get("bufferView.schema.json"));
-            var fromClass = JsonSchema.Create<glTFBufferView>();
-            Assert.True(fromSchema.MatchProperties(fromClass));
+            var fromClass = JsonSchema.FromType<glTFBufferView>();
+            Assert.AreEqual(fromSchema, fromClass);
         }
 
         [Test]
         public void Gltf()
         {
             var fromSchema = JsonSchema.ParseFromPath(SchemaDir.Get("glTF.schema.json"));
-            var fromClass = JsonSchema.Create<glTF>();
-            Assert.True(fromSchema.MatchProperties(fromClass));
+            var fromClass = JsonSchema.FromType<glTF>();
+            Assert.AreEqual(fromSchema, fromClass);
         }
 
         [Test]
         public void Image()
         {
             var fromSchema = JsonSchema.ParseFromPath(SchemaDir.Get("image.schema.json"));
-            var fromClass = JsonSchema.Create<glTFImage>();
-            Assert.True(fromSchema.MatchProperties(fromClass));
+            var fromClass = JsonSchema.FromType<glTFImage>();
+            Assert.AreEqual(fromSchema, fromClass);
         }
 
         [Test]
         public void MaterialNormalTextureInfo()
         {
             var fromSchema = JsonSchema.ParseFromPath(SchemaDir.Get("material.normalTextureInfo.schema.json"));
-            var fromClass = JsonSchema.Create<glTFMaterialNormalTextureInfo>();
-            Assert.True(fromSchema.MatchProperties(fromClass));
+            var fromClass = JsonSchema.FromType<glTFMaterialNormalTextureInfo>();
+            Assert.AreEqual(fromSchema, fromClass);
         }
 
         [Test]
         public void MaterialOcclusionTextureInfo()
         {
             var fromSchema = JsonSchema.ParseFromPath(SchemaDir.Get("material.occlusionTextureInfo.schema.json"));
-            var fromClass = JsonSchema.Create<glTFMaterialOcclusionTextureInfo>();
-            Assert.True(fromSchema.MatchProperties(fromClass));
+            var fromClass = JsonSchema.FromType<glTFMaterialOcclusionTextureInfo>();
+            Assert.AreEqual(fromSchema, fromClass);
         }
 
         [Test]
         public void MaterialPbrMetallicRoughness()
         {
             var fromSchema = JsonSchema.ParseFromPath(SchemaDir.Get("material.pbrMetallicRoughness.schema.json"));
-            var fromClass = JsonSchema.Create<glTFPbrMetallicRoughness>();
-            Assert.True(fromSchema.MatchProperties(fromClass));
+            var fromClass = JsonSchema.FromType<glTFPbrMetallicRoughness>();
+            Assert.AreEqual(fromSchema, fromClass);
         }
 
         [Test]
         public void Material()
         {
             var fromSchema = JsonSchema.ParseFromPath(SchemaDir.Get("material.schema.json"));
-            var fromClass = JsonSchema.Create<glTFMaterial>();
-            Assert.True(fromSchema.MatchProperties(fromClass));
+            var fromClass = JsonSchema.FromType<glTFMaterial>();
+            Assert.AreEqual(fromSchema, fromClass);
         }
 
         [Test]
         public void MeshPrimitive()
         {
             var fromSchema = JsonSchema.ParseFromPath(SchemaDir.Get("mesh.primitive.schema.json"));
-            var fromClass = JsonSchema.Create<glTFPrimitives>();
-            Assert.True(fromSchema.MatchProperties(fromClass));
+            var fromClass = JsonSchema.FromType<glTFPrimitives>();
+            Assert.AreEqual(fromSchema, fromClass);
         }
 
         [Test]
         public void Mesh()
         {
             var fromSchema = JsonSchema.ParseFromPath(SchemaDir.Get("mesh.schema.json"));
-            var fromClass = JsonSchema.Create<glTFMesh>();
-            Assert.True(fromSchema.MatchProperties(fromClass));
+            var fromClass = JsonSchema.FromType<glTFMesh>();
+            Assert.AreEqual(fromSchema, fromClass);
         }
 
         [Test]
         public void Node()
         {
             var fromSchema = JsonSchema.ParseFromPath(SchemaDir.Get("node.schema.json"));
-            var fromClass = JsonSchema.Create<glTFNode>();
-            Assert.True(fromSchema.MatchProperties(fromClass));
+            var fromClass = JsonSchema.FromType<glTFNode>();
+            Assert.AreEqual(fromSchema, fromClass);
         }
 
         [Test]
         public void Sampler()
         {
             var fromSchema = JsonSchema.ParseFromPath(SchemaDir.Get("sampler.schema.json"));
-            var fromClass = JsonSchema.Create<glTFTextureSampler>();
-            Assert.True(fromSchema.MatchProperties(fromClass));
+            var fromClass = JsonSchema.FromType<glTFTextureSampler>();
+            Assert.AreEqual(fromSchema, fromClass);
         }
 
         [Test]
         public void Scene()
         {
             var fromSchema = JsonSchema.ParseFromPath(SchemaDir.Get("scene.schema.json"));
-            var fromClass = JsonSchema.Create<gltfScene>();
-            Assert.True(fromSchema.MatchProperties(fromClass));
+            var fromClass = JsonSchema.FromType<gltfScene>();
+            Assert.AreEqual(fromSchema, fromClass);
         }
 
         [Test]
         public void Skin()
         {
             var fromSchema = JsonSchema.ParseFromPath(SchemaDir.Get("skin.schema.json"));
-            var fromClass = JsonSchema.Create<glTFSkin>();
-            Assert.True(fromSchema.MatchProperties(fromClass));
+            var fromClass = JsonSchema.FromType<glTFSkin>();
+            Assert.AreEqual(fromSchema, fromClass);
         }
 
         [Test]
         public void Texture()
         {
             var fromSchema = JsonSchema.ParseFromPath(SchemaDir.Get("texture.schema.json"));
-            var fromClass = JsonSchema.Create<glTFTexture>();
-            Assert.True(fromSchema.MatchProperties(fromClass));
+            var fromClass = JsonSchema.FromType<glTFTexture>();
+            Assert.AreEqual(fromSchema, fromClass);
         }
 
         [Test]
         public void TextureInfo()
         {
             var fromSchema = JsonSchema.ParseFromPath(SchemaDir.Get("textureInfo.schema.json"));
-            var fromClass = JsonSchema.Create<glTFTextureInfo>();
-            Assert.True(fromSchema.MatchProperties(fromClass));
+            var fromClass = JsonSchema.FromType<glTFTextureInfo>();
+            Assert.AreEqual(fromSchema, fromClass);
         }
     }
 }
