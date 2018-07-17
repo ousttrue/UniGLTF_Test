@@ -117,6 +117,30 @@ namespace UniGLTFJson
         }
 
         [Test]
+        public void Camera()
+        {
+            var fromSchema = JsonSchema.ParseFromPath(SchemaDir.Get("camera.schema.json"));
+            var fromClass = JsonSchema.FromType<glTFCamera>();
+            Assert.AreEqual(fromSchema, fromClass);
+        }
+
+        [Test]
+        public void CameraOrthographic()
+        {
+            var fromSchema = JsonSchema.ParseFromPath(SchemaDir.Get("camera.orthographic.schema.json"));
+            var fromClass = JsonSchema.FromType<glTFOrthographic>();
+            Assert.AreEqual(fromSchema, fromClass);
+        }
+
+        [Test]
+        public void CameraPerspective()
+        {
+            var fromSchema = JsonSchema.ParseFromPath(SchemaDir.Get("camera.perspective.schema.json"));
+            var fromClass = JsonSchema.FromType<glTFPerspective>();
+            Assert.AreEqual(fromSchema, fromClass);
+        }
+
+        [Test]
         public void Gltf()
         {
             var fromSchema = JsonSchema.ParseFromPath(SchemaDir.Get("glTF.schema.json"));
