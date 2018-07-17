@@ -31,9 +31,6 @@ namespace UniGLTFJson
             var validator = fromSchema.Validator as JsonObjectValidator;
 
             Assert.AreEqual("Accessor", fromSchema.Title);
-            Assert.AreEqual(JsonValueType.Object, validator.JsonValueType);
-            Assert.AreEqual(JsonValueType.Integer, validator.Properties["bufferView"].Validator.JsonValueType);
-            Assert.AreEqual(JsonValueType.Integer, validator.Properties["byteOffset"].Validator.JsonValueType);
 
             var fromClass = JsonSchema.FromType<glTFAccessor>();
             Assert.AreEqual(fromSchema, fromClass);

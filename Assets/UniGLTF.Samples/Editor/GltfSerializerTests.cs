@@ -16,13 +16,11 @@ namespace UniGLTFJson
             };
 
             var jsonOld = gltf.ToJson();
-            var parsedOld = JsonParser.Parse(jsonOld);
 
             var s = JsonSchema.FromType<glTFAccessor>();
             var jsonNew = s.Serialize(gltf);
-            var parsedNew = JsonParser.Parse(jsonNew);
 
-            Assert.AreEqual(parsedOld, parsedNew);
+            Assert.AreEqual(jsonOld, jsonNew);
         }
     }
 }
