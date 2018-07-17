@@ -1,10 +1,11 @@
 ﻿using NUnit.Framework;
 using System.IO;
+using UniGLTF;
 using UniJSON;
 using UnityEngine;
 
 
-namespace UniGLTF
+namespace UniGLTFJson
 {
     public class GltfSchemaTests
     {
