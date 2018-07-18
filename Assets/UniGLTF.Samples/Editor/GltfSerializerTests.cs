@@ -83,7 +83,7 @@ namespace UniGLTFJson
                 sampler = 0,
                 target = new glTFAnimationTarget
                 {
-                    path = "translation",                   
+                    path = "translation",
                 }
             });
         }
@@ -93,7 +93,7 @@ namespace UniGLTFJson
         {
             Test(new glTFAnimationTarget
             {
-                path = "",
+                path = glTFAnimationTarget.PATH_TRANSLATION,
             });
         }
 
@@ -154,7 +154,13 @@ namespace UniGLTFJson
         [Test]
         public void Gltf()
         {
-            Test(new glTF { });
+            Test(new glTF {
+                asset=new glTFAssets
+                {
+                    generator="1",
+                    version="1"
+                }
+            });
         }
 
         [Test]
@@ -169,13 +175,19 @@ namespace UniGLTFJson
         [Test]
         public void MaterialNormalTextureInfo()
         {
-            Test(new glTFMaterialNormalTextureInfo { });
+            Test(new glTFMaterialNormalTextureInfo
+            {
+                index = 0,
+            });
         }
 
         [Test]
         public void MaterialOcclusionTextureInfo()
         {
-            Test(new glTFMaterialOcclusionTextureInfo { });
+            Test(new glTFMaterialOcclusionTextureInfo
+            {
+                index = 0,
+            });
         }
 
         [Test]
@@ -193,19 +205,59 @@ namespace UniGLTFJson
         [Test]
         public void MeshPrimitive()
         {
-            Test(new glTFPrimitives { });
+            Test(new glTFPrimitives
+            {
+                indices = 0,
+                attributes = new glTFAttributes
+                {
+                    POSITION = 0,
+                    NORMAL = 1,
+                    TEXCOORD_0 = 2,
+                    COLOR_0 = 3,
+                    TANGENT = 4,
+                    JOINTS_0 = 5,
+                    WEIGHTS_0 = 6,
+                }
+            });
         }
 
         [Test]
         public void Mesh()
         {
-            Test(new glTFMesh("") { });
+            Test(new glTFMesh("mesh")
+            {
+                primitives = new System.Collections.Generic.List<glTFPrimitives>
+                {
+                    new glTFPrimitives
+                    {
+                indices = 0,
+                attributes = new glTFAttributes
+                {
+                    POSITION = 0,
+                    NORMAL = 1,
+                    TEXCOORD_0 = 2,
+                    COLOR_0 = 3,
+                    TANGENT = 4,
+                    JOINTS_0 = 5,
+                    WEIGHTS_0 = 6,
+                }
+                    }
+                }
+            });
         }
 
         [Test]
         public void Node()
         {
-            Test(new glTFNode { });
+            Test(new glTFNode
+            {
+                mesh = 0,
+                skin = 0,
+                extras = new glTFNode_extra_rootBone
+                {
+                    skinRootBone = 0,
+                }
+            });
         }
 
         [Test]
@@ -223,7 +275,11 @@ namespace UniGLTFJson
         [Test]
         public void Skin()
         {
-            Test(new glTFSkin { });
+            Test(new glTFSkin
+            {
+                joints = new int[] { 0 },
+                inverseBindMatrices = 0,
+            });
         }
 
         [Test]
@@ -235,7 +291,10 @@ namespace UniGLTFJson
         [Test]
         public void TextureInfo()
         {
-            Test(new glTFTextureInfo { });
+            Test(new glTFTextureInfo
+            {
+                index = 0,
+            });
         }
     }
 }

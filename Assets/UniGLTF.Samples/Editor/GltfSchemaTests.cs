@@ -27,11 +27,6 @@ namespace UniGLTFJson
         public void Accessor()
         {
             var fromSchema = JsonSchema.ParseFromPath(SchemaDir.Get("accessor.schema.json"));
-
-            var validator = fromSchema.Validator as JsonObjectValidator;
-
-            Assert.AreEqual("Accessor", fromSchema.Title);
-
             var fromClass = JsonSchema.FromType<glTFAccessor>();
             Assert.AreEqual(fromSchema, fromClass);
         }
