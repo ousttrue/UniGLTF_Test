@@ -80,10 +80,10 @@ namespace UniGLTFJson
         {
             Test(new glTFAnimationChannel
             {
-                sampler=0,
+                sampler = 0,
                 target = new glTFAnimationTarget
                 {
-                    path="",
+                    path = "translation",                   
                 }
             });
         }
@@ -111,11 +111,12 @@ namespace UniGLTFJson
         [Test]
         public void Animation()
         {
-            Test(new glTFAnimation {
-                channels=new System.Collections.Generic.List<glTFAnimationChannel> {
+            Test(new glTFAnimation
+            {
+                channels = new System.Collections.Generic.List<glTFAnimationChannel> {
                     new glTFAnimationChannel { sampler=0}
                 },
-                samplers=new System.Collections.Generic.List<glTFAnimationSampler> {
+                samplers = new System.Collections.Generic.List<glTFAnimationSampler> {
                     new glTFAnimationSampler { input=0, interpolation="", output=0 } },
             });
         }
@@ -123,19 +124,31 @@ namespace UniGLTFJson
         [Test]
         public void Asset()
         {
-            Test(new glTFAssets { });
+            Test(new glTFAssets
+            {
+                generator = "x",
+                version = "1",
+            });
         }
 
         [Test]
         public void Buffer()
         {
-            Test(new glTFBuffer(null) { });
+            Test(new glTFBuffer(null)
+            {
+                byteLength = 1,
+            });
         }
 
         [Test]
         public void BufferView()
         {
-            Test(new glTFBufferView { });
+            Test(new glTFBufferView
+            {
+                byteLength = 1,
+                target = glBufferTarget.ARRAY_BUFFER,
+                byteStride = 4,
+            });
         }
 
         [Test]
@@ -147,7 +160,10 @@ namespace UniGLTFJson
         [Test]
         public void Image()
         {
-            Test(new glTFImage { });
+            Test(new glTFImage
+            {
+                mimeType = "image/png",
+            });
         }
 
         [Test]
