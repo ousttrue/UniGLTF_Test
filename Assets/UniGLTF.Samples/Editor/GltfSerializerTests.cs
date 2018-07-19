@@ -127,7 +127,7 @@ namespace UniGLTFJson
             Test(new glTFAssets
             {
                 generator = "x",
-                version = "1",
+                version = "1.1",
             });
         }
 
@@ -157,8 +157,8 @@ namespace UniGLTFJson
             Test(new glTF {
                 asset=new glTFAssets
                 {
-                    generator="1",
-                    version="1"
+                    generator="4.5",
+                    version="2.5"
                 }
             });
         }
