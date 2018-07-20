@@ -7,7 +7,7 @@ namespace UniGLTFJson
 {
     public class GltfSerializerTests
     {
-        static void Test<T>(T value) where T : IJsonSerializable
+        static void Test<T>(T value) where T : JsonSerializableBase
         {
             var jsonOld = value.ToJson();
 
