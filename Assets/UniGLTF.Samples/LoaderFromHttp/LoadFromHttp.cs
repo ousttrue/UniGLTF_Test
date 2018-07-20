@@ -50,8 +50,8 @@ namespace UniGLTF
             Debug.LogFormat("gltf json: {0}", json);
 
             var context = new UniGLTF.ImporterContext();
-            context.ParseJson<glTF>(json, zipArchive);
-            gltfImporter.Import<glTF>(context);
+            context.ParseJson(json, zipArchive);
+            gltfImporter.Import(context);
             context.ShowMeshes();
         }
     }
