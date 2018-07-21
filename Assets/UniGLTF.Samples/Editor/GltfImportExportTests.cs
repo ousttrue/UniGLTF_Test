@@ -22,7 +22,16 @@ namespace UniGLTF
             var gltf = gltfExporter.Export(context.Root);
             var exportJson = gltf.ToJson();
 
-            Assert.AreEqual(UniJSON.JsonParser.Parse(importJson), UniJSON.JsonParser.Parse(exportJson));
+            var l = UniJSON.JsonParser.Parse(importJson);
+            var r = UniJSON.JsonParser.Parse(exportJson);
+            var diff = l.Diff(r);
+
+            foreach (var kv in diff)
+            {
+                Debug.LogFormat("{0}: {1}", kv.Key, kv.Value);
+            }
+
+            //Assert.AreEqual();
         }
     }
 }
