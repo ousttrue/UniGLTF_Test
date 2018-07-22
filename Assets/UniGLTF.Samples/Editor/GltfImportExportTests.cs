@@ -24,11 +24,10 @@ namespace UniGLTF
 
             var l = UniJSON.JsonParser.Parse(importJson);
             var r = UniJSON.JsonParser.Parse(exportJson);
-            var diff = l.Diff(r);
 
-            foreach (var kv in diff)
+            foreach (var diff in l.Diff(r))
             {
-                Debug.LogFormat("{0}: {1}", kv.Key, kv.Value);
+                Debug.Log(diff);
             }
 
             //Assert.AreEqual();
