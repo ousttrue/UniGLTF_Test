@@ -49,7 +49,7 @@ namespace UniGLTF
 #endif
             Debug.LogFormat("gltf json: {0}", json);
 
-            var context = new UniGLTF.ImporterContext();
+            var context = new ImporterContext(null);
             context.ParseJson(json, zipArchive);
             gltfImporter.Load(context);
             context.ShowMeshes();

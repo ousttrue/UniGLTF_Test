@@ -42,7 +42,7 @@ namespace UniGLTF
             var bytes = File.ReadAllBytes(path);
 
             Debug.LogFormat("[OnClick] {0}", path);
-            var context = new ImporterContext();
+            var context = new ImporterContext(null);
 
             var ext = Path.GetExtension(path).ToLower();
             switch(ext)

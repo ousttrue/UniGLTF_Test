@@ -12,7 +12,7 @@ namespace UniGLTF
         public void ImportExportTest()
         {
             var path = Path.GetFullPath(Application.dataPath + "/../glTF-Sample-Models/2.0/Box/glTF/Box.gltf");
-            var context = new ImporterContext();
+            var context = new ImporterContext(null);
             var bytes = File.ReadAllBytes(path);
             var importJson = Encoding.UTF8.GetString(bytes);
 
