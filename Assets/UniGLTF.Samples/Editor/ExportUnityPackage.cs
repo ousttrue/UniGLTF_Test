@@ -47,7 +47,7 @@ namespace UniGLTF
             AssetDatabase.ExportPackage(EnumerateFiles("Assets/UniGLTF").ToArray()
                 , path, ExportPackageOptions.Interactive);
 
-            var samplePath = path.Replace(UniGLTFVersion.UNIGLTF_VERSION, "UniGLTF.Samles-"+UniGLTFVersion.VERSION);
+            var samplePath = path.Replace(UniGLTFVersion.UNIGLTF_VERSION, "UniGLTF.Samples-"+UniGLTFVersion.VERSION);
             AssetDatabase.ExportPackage(EnumerateFiles("Assets/UniGLTF.Samples").ToArray()
                 , samplePath, ExportPackageOptions.Interactive);
         }
