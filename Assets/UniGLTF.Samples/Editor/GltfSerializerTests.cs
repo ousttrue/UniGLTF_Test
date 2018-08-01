@@ -9,10 +9,10 @@ namespace UniGLTFJson
     {
         static void Test<T>(T value) where T : JsonSerializableBase
         {
-            var jsonOld = value.ToJson();
+            var jsonOld = value.ToJson().ParseAsJson();
 
             var s = JsonSchema.FromType(value.GetType());
-            var jsonNew = s.Serialize(value);
+            var jsonNew = s.Serialize(value).ParseAsJson();
 
             Assert.AreEqual(jsonOld, jsonNew);
         }
@@ -253,10 +253,6 @@ namespace UniGLTFJson
             {
                 mesh = 0,
                 skin = 0,
-                extras = new glTFNode_extra_rootBone
-                {
-                    skinRootBone = 0,
-                }
             });
         }
 
