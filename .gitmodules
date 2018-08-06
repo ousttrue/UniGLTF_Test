@@ -7,3 +7,6 @@
 [submodule "glTF-Sample-Models"]
 	path = glTF-Sample-Models
 	url = https://github.com/KhronosGroup/glTF-Sample-Models.git
+[submodule "glTF-Asset-Generator"]
+	path = glTF-Asset-Generator
+	url = https://github.com/bghgary/glTF-Asset-Generator.git
