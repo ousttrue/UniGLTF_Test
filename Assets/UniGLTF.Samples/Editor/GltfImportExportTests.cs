@@ -32,5 +32,35 @@ namespace UniGLTF
 
             //Assert.AreEqual();
         }
+
+#if UNITY_2017_OR_NEWER
+#else
+        [Test]
+        public void TextureSamplerImportTest_for_Unity_5_6()
+        {
+            Assert.AreEqual(
+                new[] { TextureSamplerUtil.TypeWithMode(TextureSamplerUtil.TextureWrapType.All, TextureWrapMode.Repeat) },
+                TextureSamplerUtil.GetUnityWrapMode(new glTFTextureSampler
+                {
+                })
+                );
+
+            Assert.AreEqual(
+                new[] { TextureSamplerUtil.TypeWithMode(TextureSamplerUtil.TextureWrapType.All, TextureWrapMode.Clamp) },
+                TextureSamplerUtil.GetUnityWrapMode(new glTFTextureSampler
+                {
+                    wrapS = glWrap.CLAMP_TO_EDGE
+                })
+                );
+
+            Assert.AreEqual(
+                new[] { TextureSamplerUtil.TypeWithMode(TextureSamplerUtil.TextureWrapType.All, TextureWrapMode.Repeat) },
+                TextureSamplerUtil.GetUnityWrapMode(new glTFTextureSampler
+                {
+                    wrapS = glWrap.REPEAT
+                })
+                );
+        }
+#endif
     }
 }
