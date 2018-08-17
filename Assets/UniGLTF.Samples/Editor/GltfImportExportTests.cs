@@ -55,15 +55,6 @@ namespace UniGLTF
                     wrapT = glWrap.CLAMP_TO_EDGE,
                 })
                 );
-
-            Assert.AreEqual(FilterMode.Bilinear, TextureSamplerUtil.ImportFilterMode(glFilter.NONE));
-            Assert.AreEqual(FilterMode.Bilinear, TextureSamplerUtil.ImportFilterMode(glFilter.LINEAR));
-            Assert.AreEqual(FilterMode.Trilinear, TextureSamplerUtil.ImportFilterMode(glFilter.LINEAR_MIPMAP_LINEAR));
-            Assert.AreEqual(FilterMode.Bilinear, TextureSamplerUtil.ImportFilterMode(glFilter.LINEAR_MIPMAP_NEAREST));
-            Assert.AreEqual(FilterMode.Point, TextureSamplerUtil.ImportFilterMode(glFilter.NEAREST));
-            Assert.AreEqual(FilterMode.Point, TextureSamplerUtil.ImportFilterMode(glFilter.NEAREST_MIPMAP_LINEAR));
-            Assert.AreEqual(FilterMode.Point, TextureSamplerUtil.ImportFilterMode(glFilter.NEAREST_MIPMAP_NEAREST));
-            Assert.AreEqual(FilterMode.Bilinear, TextureSamplerUtil.ImportFilterMode(glFilter.NONE));
         }
 #else
         [Test]
@@ -93,6 +84,19 @@ namespace UniGLTF
                 );
         }
 #endif
+
+        [Test]
+        public void TextureSamplerImportFilterModeTest()
+        {
+            Assert.AreEqual(FilterMode.Bilinear, TextureSamplerUtil.ImportFilterMode(glFilter.NONE));
+            Assert.AreEqual(FilterMode.Bilinear, TextureSamplerUtil.ImportFilterMode(glFilter.LINEAR));
+            Assert.AreEqual(FilterMode.Trilinear, TextureSamplerUtil.ImportFilterMode(glFilter.LINEAR_MIPMAP_LINEAR));
+            Assert.AreEqual(FilterMode.Bilinear, TextureSamplerUtil.ImportFilterMode(glFilter.LINEAR_MIPMAP_NEAREST));
+            Assert.AreEqual(FilterMode.Point, TextureSamplerUtil.ImportFilterMode(glFilter.NEAREST));
+            Assert.AreEqual(FilterMode.Point, TextureSamplerUtil.ImportFilterMode(glFilter.NEAREST_MIPMAP_LINEAR));
+            Assert.AreEqual(FilterMode.Point, TextureSamplerUtil.ImportFilterMode(glFilter.NEAREST_MIPMAP_NEAREST));
+            Assert.AreEqual(FilterMode.Bilinear, TextureSamplerUtil.ImportFilterMode(glFilter.NONE));
+        }
 
         [Test]
         public void TextureSamplerExportFilterTest()
@@ -151,7 +155,26 @@ namespace UniGLTF
         [Test]
         public void TextureSamplerExportTest_for_Unity_5_6()
         {
-            Assert.Fail();
+            {
+                var texture = Resources.Load<Texture2D>("Sampler/wrap_clamp");
+                var sampler = TextureSamplerUtil.Export(texture);
+                Assert.AreEqual(glWrap.CLAMP_TO_EDGE, sampler.wrapS);
+                Assert.AreEqual(glWrap.CLAMP_TO_EDGE, sampler.wrapT);
+            }
+            {
+                var texture = Resources.Load<Texture2D>("Sampler/wrap_repeat");
+                var sampler = TextureSamplerUtil.Export(texture);
+                Assert.AreEqual(glWrap.REPEAT, sampler.wrapS);
+                Assert.AreEqual(glWrap.REPEAT, sampler.wrapT);
+            }
+            /*
+            {
+                var texture = Resources.Load<Texture2D>("Sampler/wrap_repeat_clamp");
+                var sampler = TextureSamplerUtil.Export(texture);
+                Assert.AreEqual(glWrap.REPEAT, sampler.wrapS);
+                Assert.AreEqual(glWrap.REPEAT, sampler.wrapT);
+            }
+            */
         }
 #endif
     }
