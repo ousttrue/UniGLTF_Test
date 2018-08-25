@@ -147,7 +147,7 @@ namespace UniGLTFJson
             {
                 byteLength = 1,
                 target = glBufferTarget.ARRAY_BUFFER,
-                byteStride = 4,
+                //byteStride = 4,
             });
         }
 
