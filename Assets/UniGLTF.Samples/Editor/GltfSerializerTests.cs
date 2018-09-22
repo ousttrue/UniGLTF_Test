@@ -287,7 +287,7 @@ namespace UniGLTFJson
         [Test]
         public void TextureInfo()
         {
-            Test(new glTFTextureInfo
+            Test(new glTFMaterialEmissiveTextureInfo
             {
                 index = 0,
             });
