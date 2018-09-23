@@ -17,7 +17,7 @@ namespace UniGLTF
             var importJson = Encoding.UTF8.GetString(bytes);
 
             context.ParseJson(importJson, new FileSystemStorage(Path.GetDirectoryName(path)));
-            gltfImporter.Load(context);
+            context.Load();
 
             var gltf = gltfExporter.Export(context.Root);
             var exportJson = gltf.ToJson();

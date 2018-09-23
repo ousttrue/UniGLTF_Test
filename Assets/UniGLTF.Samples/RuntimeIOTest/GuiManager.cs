@@ -73,7 +73,7 @@ namespace UniGLTF
                     throw new NotImplementedException();
             }
 
-            gltfImporter.Load(context);
+            context.Load();
             context.Root.name = Path.GetFileNameWithoutExtension(path);
             context.ShowMeshes();
 
