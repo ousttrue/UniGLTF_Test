@@ -32,8 +32,8 @@ namespace UniGLTF
                 var material = Resources.Load<Material>("Materials/pbr_opaque");
                 var exporter = new MaterialExporter();
                 var textures = GetTextures(material).ToList();
-                List<Texture> exportedTextures = null;
-                var exported = exporter.ExportMaterial(material, textures, out exportedTextures);
+                var exportedTextures = new List<Texture>(textures);
+                var exported = exporter.ExportMaterial(material, textures, exportedTextures);
                 Assert.True(exported.extensions == null || exported.extensions.KHR_materials_unlit == null);
                 Assert.AreEqual("OPAQUE", exported.alphaMode);
             }
@@ -42,8 +42,8 @@ namespace UniGLTF
                 var material = Resources.Load<Material>("Materials/pbr_transparent");
                 var exporter = new MaterialExporter();
                 var textures = GetTextures(material).ToList();
-                List<Texture> exportedTextures = null;
-                var exported = exporter.ExportMaterial(material, textures, out exportedTextures);
+                var exportedTextures = new List<Texture>(textures);
+                var exported = exporter.ExportMaterial(material, textures, exportedTextures);
                 Assert.True(exported.extensions == null || exported.extensions.KHR_materials_unlit == null);
                 Assert.AreEqual("BLEND", exported.alphaMode);
             }
@@ -51,8 +51,8 @@ namespace UniGLTF
                 var material = Resources.Load<Material>("Materials/pbr_cutout");
                 var exporter = new MaterialExporter();
                 var textures = GetTextures(material).ToList();
-                List<Texture> exportedTextures = null;
-                var exported = exporter.ExportMaterial(material, textures, out exportedTextures);
+                var exportedTextures = new List<Texture>(textures);
+                var exported = exporter.ExportMaterial(material, textures, exportedTextures);
                 Assert.True(exported.extensions == null || exported.extensions.KHR_materials_unlit == null);
                 Assert.AreEqual("MASK", exported.alphaMode);
             }
@@ -61,8 +61,8 @@ namespace UniGLTF
                 var material = Resources.Load<Material>("Materials/unlit_color");
                 var exporter = new MaterialExporter();
                 var textures = GetTextures(material).ToList();
-                List<Texture> exportedTextures = null;
-                var exported = exporter.ExportMaterial(material, textures, out exportedTextures);
+                var exportedTextures = new List<Texture>(textures);
+                var exported = exporter.ExportMaterial(material, textures, exportedTextures);
                 Assert.NotNull(exported.extensions.KHR_materials_unlit);
                 Assert.AreEqual("OPAQUE", exported.alphaMode);
             }
@@ -70,8 +70,8 @@ namespace UniGLTF
                 var material = Resources.Load<Material>("Materials/unlit_texture");
                 var exporter = new MaterialExporter();
                 var textures = GetTextures(material).ToList();
-                List<Texture> exportedTextures = null;
-                var exported = exporter.ExportMaterial(material, textures, out exportedTextures);
+                var exportedTextures = new List<Texture>(textures);
+                var exported = exporter.ExportMaterial(material, textures, exportedTextures);
                 Assert.NotNull(exported.extensions.KHR_materials_unlit);
                 Assert.AreEqual("OPAQUE", exported.alphaMode);
             }
@@ -79,8 +79,8 @@ namespace UniGLTF
                 var material = Resources.Load<Material>("Materials/unlit_transparent");
                 var exporter = new MaterialExporter();
                 var textures = GetTextures(material).ToList();
-                List<Texture> exportedTextures = null;
-                var exported = exporter.ExportMaterial(material, textures, out exportedTextures);
+                var exportedTextures = new List<Texture>(textures);
+                var exported = exporter.ExportMaterial(material, textures, exportedTextures);
                 Assert.NotNull(exported.extensions.KHR_materials_unlit);
                 Assert.AreEqual("BLEND", exported.alphaMode);
             }
@@ -88,10 +88,15 @@ namespace UniGLTF
                 var material = Resources.Load<Material>("Materials/unlit_cutout");
                 var exporter = new MaterialExporter();
                 var textures = GetTextures(material).ToList();
-                List<Texture> exportedTextures = null;
-                var exported = exporter.ExportMaterial(material, textures, out exportedTextures);
+                var exportedTextures = new List<Texture>(textures);
+                var exported = exporter.ExportMaterial(material, textures, exportedTextures);
                 Assert.NotNull(exported.extensions.KHR_materials_unlit);
                 Assert.AreEqual("MASK", exported.alphaMode);
+            }
+
+            {
+                // multimaterial
+
             }
         }
     }
