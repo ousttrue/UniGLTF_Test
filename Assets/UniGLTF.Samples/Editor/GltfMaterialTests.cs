@@ -96,7 +96,23 @@ namespace UniGLTF
 
             {
                 // multimaterial
-
+                var materials = new Material[]{
+                    Resources.Load<Material>("Materials/unlit_transparent"),
+                    Resources.Load<Material>("Materials/unlit_cutout")
+                };
+                var exporter = new MaterialExporter();
+                var textures = materials.SelectMany(x => GetTextures(x)).ToList();
+                var exportedTextures = new List<Texture>(textures);
+                {
+                    var exported = exporter.ExportMaterial(materials[0], textures, exportedTextures);
+                    Assert.NotNull(exported.extensions.KHR_materials_unlit);
+                    Assert.AreEqual("BLEND", exported.alphaMode);
+                }
+                {
+                    var exported = exporter.ExportMaterial(materials[1], textures, exportedTextures);
+                    Assert.NotNull(exported.extensions.KHR_materials_unlit);
+                    Assert.AreEqual("MASK", exported.alphaMode);
+                }
             }
         }
     }
