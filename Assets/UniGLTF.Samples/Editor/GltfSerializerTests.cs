@@ -114,7 +114,11 @@ namespace UniGLTFJson
             Test(new glTFAnimation
             {
                 channels = new System.Collections.Generic.List<glTFAnimationChannel> {
-                    new glTFAnimationChannel { sampler=0}
+                    new glTFAnimationChannel { sampler=0, target =
+                        new glTFAnimationTarget{
+                            path = "translation"
+                        }
+                    }
                 },
                 samplers = new System.Collections.Generic.List<glTFAnimationSampler> {
                     new glTFAnimationSampler { input=0, interpolation="", output=0 } },
